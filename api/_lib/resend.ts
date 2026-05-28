@@ -55,6 +55,20 @@ function contactEmailHtml(data: ContactFormPayload): { subject: string; html: st
   }
 }
 
+function parseResendError(text: string, status: number): string {
+  try {
+    const parsed = JSON.parse(text) as { message?: string }
+    if (parsed.message?.includes('domain is not verified')) {
+      return 'El dominio expedicargas.com no está verificado en Resend. Verifique el dominio en resend.com/domains o use onboarding@resend.dev temporalmente.'
+    }
+    if (parsed.message) return parsed.message
+  } catch {
+    // fall through
+  }
+
+  return text || `Resend error ${status}`
+}
+
 export async function sendContactEmail(data: ContactFormPayload) {
   if (data.captchaAnswer !== 16) {
     throw new Error('Invalid captcha answer')
@@ -82,7 +96,7 @@ export async function sendContactEmail(data: ContactFormPayload) {
 
   if (!response.ok) {
     const text = await response.text().catch(() => '')
-    throw new Error(text || `Resend error ${response.status}`)
+    throw new Error(parseResendError(text, response.status))
   }
 
   return response.json()
