@@ -8,11 +8,44 @@ export function ContactForm() {
   const [message, setMessage] = useState('')
   const [answer, setAnswer] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
-    if (Number(answer) !== 16) return
-    setSubmitted(true)
+    setError('')
+
+    if (Number(answer) !== 16) {
+      setError(t('Respuesta incorrecta. Intente de nuevo.', 'Incorrect answer. Please try again.'))
+      return
+    }
+
+    setSubmitting(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          captchaAnswer: Number(answer),
+        }),
+      })
+
+      const data = (await response.json().catch(() => ({}))) as { error?: string }
+
+      if (!response.ok) {
+        throw new Error(data.error || t('No se pudo enviar el mensaje.', 'Could not send your message.'))
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t('No se pudo enviar el mensaje.', 'Could not send your message.'))
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -82,8 +115,9 @@ export function ContactForm() {
           className="w-full max-w-[120px] border border-white/30 bg-white/10 px-3 py-2 text-white outline-none focus:border-white"
         />
       </div>
-      <button type="submit" className="et-button et-button-light">
-        {t('Enviar', 'Send')}
+      {error ? <p className="text-sm text-red-200">{error}</p> : null}
+      <button type="submit" className="et-button et-button-light" disabled={submitting}>
+        {submitting ? t('Enviando...', 'Sending...') : t('Enviar', 'Send')}
       </button>
     </form>
   )
