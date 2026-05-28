@@ -1,0 +1,834 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand: #0066ff;
+  --color-brand-light: #2ea3f2;
+  --color-footer: #222222;
+  --color-footer-bottom: #1f1f1f;
+  --font-sans: 'Open Sans', Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: #666;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+img.site-logo {
+  width: auto;
+  max-width: none;
+  height: 43px;
+}
+
+.site-header-bar {
+  height: 80px;
+}
+
+.container {
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.et-button {
+  display: inline-block;
+  padding: 0.3em 1em;
+  border: 2px solid var(--color-brand);
+  border-radius: 3px;
+  color: var(--color-brand);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.7;
+  transition: all 0.2s;
+}
+
+.et-button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: transparent;
+  padding: 0.3em 2em 0.3em 0.7em;
+}
+
+.et-button::after {
+  content: '→';
+  margin-left: 0.5em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.et-button:hover::after {
+  opacity: 1;
+}
+
+.et-button-light {
+  color: #fff;
+  border-color: #fff;
+}
+
+.et-button-light:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.page-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 80px 0;
+}
+
+.page-hero h1 {
+  color: #fff;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.2;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.page-hero-centered .page-hero-inner-centered {
+  text-align: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.page-hero-centered h1 {
+  width: 100%;
+}
+
+.page-hero-subtitle {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.7;
+  text-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.4);
+  margin: 16px 0 0;
+}
+
+.page-hero-fullscreen {
+  min-height: 100vh;
+}
+
+.page-hero-fullscreen .page-hero-content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.page-hero-cargo h1 {
+  font-size: 50px;
+  font-weight: 500;
+  text-shadow: 0.08em 0.08em 0.08em rgba(0, 0, 0, 0.4);
+}
+
+.page-hero-cargo .page-hero-subtitle {
+  font-size: 24px;
+  text-align: center;
+}
+
+.page-hero-scroll {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.page-hero-scroll-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.section {
+  padding: 4% 0;
+}
+
+.section-dark {
+  background: var(--color-footer);
+  color: #fff;
+}
+
+.section-gray {
+  background: #eaeaea;
+  color: #666;
+}
+
+.section-blue {
+  background: var(--color-brand-light);
+  color: #fff;
+}
+
+.section-blur {
+  background-image: url('/images/Fondo-AZ-Blur-01.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.outsourcing-banner {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.outsourcing-banner h1 {
+  margin: 0 0 16px;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.outsourcing-banner p {
+  margin: 0 0 24px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.prefer-section {
+  padding-top: 4%;
+  padding-bottom: 0;
+}
+
+.prefer-layout {
+  display: grid;
+  grid-template-columns: 66.667% 33.333%;
+  align-items: end;
+  gap: 0;
+}
+
+.prefer-content {
+  padding-right: 5.5%;
+  padding-bottom: 4%;
+}
+
+.prefer-image-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  line-height: 0;
+}
+
+.prefer-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.section-title {
+  font-size: 30px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.section-dark .section-title,
+.section-blue .section-title,
+.section-blur .section-title {
+  color: #fff;
+}
+
+.blurb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5.5%;
+}
+
+.blurb-card {
+  text-align: center;
+}
+
+.blurb-icon {
+  color: var(--color-brand-light);
+  margin-bottom: 20px;
+}
+
+.blurb-icon img {
+  width: 70px;
+  height: 70px;
+}
+
+.blurb-card h4 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.section-dark .blurb-card h4,
+.section-blue .blurb-card h4,
+.section-blur .blurb-card h4 {
+  color: #fff;
+}
+
+.blurb-card p {
+  margin: 0;
+}
+
+.blurb-card p {
+  margin: 0;
+}
+
+.section-inner-shadow {
+  box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.07);
+}
+
+.section-cargo-maritime {
+  padding-top: 0;
+}
+
+.blurb-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cargo-blurbs {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.cargo-blurb-icon {
+  margin-bottom: 30px;
+  color: var(--color-brand);
+}
+
+.cargo-blurbs .blurb-card h4 {
+  font-size: 30px;
+}
+
+.cargo-blurbs .blurb-card p {
+  font-size: 20px;
+}
+
+.cargo-feature-band {
+  background: linear-gradient(180deg, #14a876 0%, #007f9b 100%);
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.cargo-feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5.5%;
+  align-items: stretch;
+}
+
+.cargo-feature-row-band {
+  margin-bottom: 0;
+}
+
+.cargo-feature-image img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.cargo-feature-band .cargo-feature-image img {
+  margin-left: 0;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cargo-feature-image {
+  position: sticky;
+  top: 100px;
+}
+
+.cargo-feature-band .cargo-feature-image {
+  position: static;
+  display: flex;
+  align-items: stretch;
+}
+
+.cargo-feature-image-shadow {
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+}
+
+.cargo-feature-textbox {
+  border: 2px solid var(--color-brand);
+  padding: 30px;
+}
+
+.cargo-feature-textbox-maritime {
+  background: transparent;
+  color: #fff;
+  padding: 30px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cargo-feature-textbox-maritime h1 {
+  color: #fff;
+  font-size: 50px;
+  text-align: center;
+}
+
+.cargo-feature-textbox-maritime.content-block h1 {
+  color: #fff;
+}
+
+.cargo-feature-textbox-maritime p {
+  text-align: justify;
+  color: #fff;
+  font-size: 20px;
+}
+
+.cargo-cta-wrap {
+  padding-top: 27px;
+}
+
+.cargo-feature-textbox-dark {
+  background: var(--color-footer);
+  color: #fff;
+}
+
+.cargo-feature-textbox-dark h1 {
+  color: #fff;
+  font-size: 50px;
+  text-align: center;
+}
+
+.cargo-feature-textbox-dark p {
+  text-align: justify;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cargo-feature-textbox-light h1 {
+  font-size: 50px;
+  text-align: left;
+}
+
+.cargo-feature-textbox-light p {
+  text-align: justify;
+}
+
+.cargo-cta {
+  background: #ff6600;
+  padding: 40px 60px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 6px 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.cargo-cta h2 {
+  margin: 0 0 16px;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.cargo-cta p {
+  margin: 0 0 24px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.cargo-cta-button {
+  margin-top: 8px;
+}
+
+.cargo-cta-parallax {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 4% 0;
+}
+
+.cargo-cta-parallax::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.cargo-cta-parallax .container {
+  position: relative;
+  z-index: 1;
+}
+
+.cargo-cta-overlay {
+  background: transparent;
+  box-shadow: none;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5.5%;
+  align-items: center;
+}
+
+.content-block h1,
+.content-block h2 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 20px;
+}
+
+.content-block p {
+  margin: 0 0 20px;
+}
+
+.advantage-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.advantage-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.advantage-check {
+  color: #ff6600;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.advantage-item h4 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.advantage-item p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.section-orange {
+  padding: 0;
+  background: linear-gradient(180deg, #ff6600 0%, #d8682b 100%);
+  box-shadow: 0 12px 18px -6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 10;
+}
+
+.outsourcing-operations-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.outsourcing-operations-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5.5%;
+  align-items: center;
+  width: 80%;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.outsourcing-operations-content {
+  padding: 70px 0;
+}
+
+.outsourcing-operations-content h1,
+.outsourcing-operations-content p {
+  text-align: right;
+  color: #fff;
+}
+
+.outsourcing-operations-content h1 {
+  font-size: 50px;
+  line-height: 1.7;
+}
+
+.outsourcing-operations-image {
+  text-align: right;
+}
+
+.outsourcing-operations-image img {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.section-professionals {
+  padding: 54px 0 0;
+  overflow: visible;
+}
+
+.professionals-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 27px;
+}
+
+.professionals-content {
+  width: 100%;
+}
+
+.professionals-content p:last-child {
+  margin-bottom: 0;
+}
+
+.professionals-title {
+  color: #1775c7 !important;
+  font-size: 50px;
+  line-height: 1.7;
+}
+
+.professionals-image-wrap {
+  width: 100%;
+  margin-top: 27px;
+  margin-bottom: 0;
+  line-height: 0;
+  text-align: center;
+}
+
+.professionals-image {
+  display: block;
+  width: auto;
+  max-width: 700px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.section-advantages-dark {
+  background: #08090b;
+  color: #fff;
+}
+
+.section-advantages-title {
+  padding-top: 54px;
+  padding-bottom: 0;
+}
+
+.section-advantages-body {
+  padding-top: 0;
+  padding-bottom: 4%;
+}
+
+.advantages-title {
+  margin: 0;
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  color: #fff;
+}
+
+.outsourcing-advantages-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 5.5%;
+  align-items: start;
+}
+
+.advantage-list-single {
+  grid-template-columns: 1fr;
+}
+
+.advantage-list-single .advantage-item h4,
+.advantage-list-single .advantage-item p {
+  text-align: left;
+}
+
+.outsourcing-advantages-image {
+  text-align: center;
+}
+
+.outsourcing-advantages-image img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.contact-map {
+  display: block;
+  width: 100%;
+  height: 440px;
+  border: 0;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 981px) {
+  .outsourcing-operations-row {
+    width: 80%;
+  }
+}
+
+@media (max-width: 980px) {
+  .container,
+  .page-hero h1 {
+    width: 90%;
+  }
+
+  .blurb-grid,
+  .blurb-grid-2,
+  .two-col,
+  .advantage-list,
+  .prefer-layout,
+  .cargo-feature-row,
+  .outsourcing-operations-row,
+  .outsourcing-advantages-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cargo-feature-image {
+    position: static;
+  }
+
+  .cargo-cta {
+    padding: 40px 24px;
+  }
+
+  .page-hero-cargo h1 {
+    font-size: 40px;
+  }
+
+  .page-hero-cargo .page-hero-subtitle {
+    font-size: 17px;
+  }
+
+  .cargo-feature-textbox-maritime {
+    padding: 30px;
+  }
+
+  .cargo-cta h2,
+  .cargo-feature-textbox-dark h1,
+  .cargo-feature-textbox-light h1,
+  .cargo-feature-textbox-maritime h1 {
+    font-size: 32px;
+  }
+
+  .cargo-cta-parallax {
+    background-attachment: scroll;
+  }
+
+  .outsourcing-operations-row {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .outsourcing-operations-wrap {
+    justify-content: center;
+  }
+
+  .outsourcing-operations-content h1,
+  .outsourcing-operations-content p {
+    text-align: center;
+  }
+
+  .outsourcing-operations-image {
+    text-align: center;
+  }
+
+  .outsourcing-operations-image img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .outsourcing-operations-content {
+    padding: 40px 0;
+  }
+
+  .outsourcing-operations-content h1,
+  .advantages-title,
+  .professionals-title {
+    font-size: 32px;
+  }
+
+  .prefer-content {
+    padding-right: 0;
+    padding-bottom: 4%;
+  }
+
+  .prefer-image-wrap {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .page-hero h1 {
+    font-size: 32px;
+  }
+
+  .contact-map {
+    height: 350px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-hero-cargo h1 {
+    font-size: 30px;
+  }
+
+  .page-hero-cargo .page-hero-subtitle {
+    font-size: 14px;
+  }
+
+  .contact-map {
+    height: 220px;
+  }
+}
+
+@media (max-width: 479px) {
+  .contact-map {
+    height: 200px;
+  }
+}
