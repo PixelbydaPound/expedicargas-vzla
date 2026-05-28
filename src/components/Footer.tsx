@@ -91,7 +91,7 @@ export function Footer() {
 
       <div className="bg-footer-bottom py-4 text-center text-sm text-white/70">
         <div className="container">
-          <p>{t('Diseñado por CH3. Derechos reservados.', 'Designed by CH3. All rights reserved.')}</p>
+          <p>{t('Todos los derechos reservados - 2026', 'All rights reserved - 2026')}</p>
         </div>
       </div>
     </footer>
